@@ -52,7 +52,21 @@ INSERT INTO item (`NOME`,`SKU`,`PRECO`) VALUES
      ('Farinha','1LDKCKSPWE', 4.00);
 
 ```
-#### Agora vamos em nosso codigo, e bem na raiz, criaremos uma pasta chamada <i>models</i> dentro dessa pasta iremos criar um arquivo .js com o nome de <i>item.js</i>, assim que criado dentro dele você deve criar algo dessa forma:
+#### Dentro da raiz do nosso projeto, crie uma conexão com o banco de dados, com o nome de <i> connectDB.js</i> e insira a conexão, algo assim:
+```
+const mysql = require('mysql');
+const con = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database:'produtos'
+});
+
+module.exports = con;
+
+```
+
+#### Crie na raiz do projeto também uma pasta chamada <i>models</i> dentro dessa pasta iremos criar um arquivo .js com o nome de <i>Item.js</i>, assim que criado dentro dele você deve criar algo dessa forma:
 ```
 const db = require('../connectDB');
 var Item={
@@ -80,5 +94,70 @@ var Item={
 };
 
 module.exports = Item;
+
+```
+#### Na raiz do projeto, dentro da pasta <i>routes</i>, crie um arquivo chamado <i>tableImte.js</i>, é nesse arquivo que você definira as rotas de acesso para o model. ex.:
+```
+var express = require('express');
+var router = express.Router();
+var Item = require('../models/Item');
+
+
+router.get('/', (req, res, next) => {
+    if(!req.query.id){
+        Item.getAll((err, rows) => {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        });
+    }else {
+        Item.getById(req.query.id, (err, rows) => {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        });
+    }
+});
+
+router.post('/', (req, res, next) => {
+    Item.add(req.body, (err, count) => {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(req.body);
+        }
+    });
+});
+
+router.delete('/:id', (req, res, next) => {
+    Item.delete(req.query.id, (err, count) => {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(count);
+        }
+    });
+});
+
+router.put('/:id', (req, res, next) => {
+    Item.update(req.query.id, req.body, (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(rows);
+        }
+    });
+});
+
+module.exports = router;
 
 ```
