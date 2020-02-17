@@ -213,3 +213,15 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 ```
+### FIMMMM 
+#### Agora você, acesse as rotas atraves de alguma REST client, como postman ou insomnia. 
+```
+(get) http://localhost:3000/item	
+(get) http://localhost:3000/Tasks/item	
+(delete) http://localhost:3000/Tasks/item	
+(post) http://localhost:3000/item (dados body)
+(put) http://localhost:3000/item/1	(dados body)
+
+```
+## Espero que tudo tenha dado certo para você ai.🕺
+<img src="https://media1.giphy.com/media/ckeHl52mNtoq87veET/giphy.gif" />
