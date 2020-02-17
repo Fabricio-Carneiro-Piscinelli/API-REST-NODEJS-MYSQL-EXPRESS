@@ -39,3 +39,46 @@
 );
 
 ```
+#### Espero que tudo tenha dado certo! Insira alguns valores em sua tabela. ex.:
+```
+INSERT INTO item (`NOME`,`SKU`,`PRECO`) VALUES 
+     ('Feijão','23EEDEDS', 6.00),
+     ('Arroz','949KMFW', 14.00),
+     ('Batata','WDREFF33', 4.00),
+     ('Macarrão','2323DKCJJ', 5.20),
+     ('Oléo de Soja','PPPP2323', 8.00),
+     ('Pasta de Dente','23DDWWQCV', 7.50),
+     ('Queijo','BFEORIC2', 3.20),
+     ('Farinha','1LDKCKSPWE', 4.00);
+
+```
+#### Agora vamos em nosso codigo, e bem na raiz, criaremos uma pasta chamada <i>models</i> dentro dessa pasta iremos criar um arquivo .js com o nome de <i>item.js</i>, assim que criado dentro dele você deve criar algo dessa forma:
+```
+const db = require('../connectDB');
+var Item={
+
+    getAll:(callback) => { 
+        return db.query("Select * from item",callback);
+    },
+
+    getById:(id,callback) => {
+        return db.query("select * from item where ID=?",[id],callback);
+    },
+
+    add:function( dt ,callback){
+        return db.query("Insert into item values(?,?,?)", [ dt.name, dt.sku, dt.price ],callback);
+    },
+
+    delete:(id,callback) => {
+        return db.query("delete from item where ID=?",[id],callback);
+    },
+
+    update:( sku, dt ,callback ) => {
+        return db.query("update item set PRECO=? where SKU=?", [ dt.price, sku], callback);
+    }
+ 
+};
+
+module.exports = Item;
+
+```
