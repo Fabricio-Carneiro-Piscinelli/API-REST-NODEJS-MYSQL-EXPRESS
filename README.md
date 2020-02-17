@@ -4,7 +4,7 @@
 
 <img src="https://i.pinimg.com/originals/1e/a2/bf/1ea2bf43d262adc533f6ba78a7772a9c.gif" />
 
-### Bom mais enfim, vamos a prática 🙇‍
+### Enfim, vamos a prática 🙇‍
 #### Primeiro passo é instalar as dependências da aplicação, então rode os comandos em seu terminal.
      1° - instale o express-generator  -g
      2° - express 
