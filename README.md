@@ -1,5 +1,5 @@
 # API-REST com NodeJs, MySQL e Express
-### o que é API-REST e por que utiliar ?
+### o que é API-REST e por que utilizar ?
 #### Representational State Transfer (REST), em português Transferência Representacional de Estado, é uma arquitetura de software que define um conjunto de restrições a serem usados para a criação de web services (serviços Web). Isso para nós desenvolvedores e uma baita mão na roda, já que uma vez criada podemos utilizá la para diversos fins, seja para aplicações web, desktop ou até mesmo mobile. Sendo assim os clients de REST podem buscar ou manipular dados de um banco de dados diretamente por rotas de navegação.
 
 <img src="https://i.pinimg.com/originals/1e/a2/bf/1ea2bf43d262adc533f6ba78a7772a9c.gif" />
@@ -214,7 +214,7 @@ module.exports = app;
 
 ```
 ### FIMMMM 
-#### Agora você, acesse as rotas atraves de alguma REST client, como postman ou insomnia. 
+#### Agora acesse as rotas atraves de alguma REST client, como postman ou insomnia. 
 ```
 (get) http://localhost:3000/item	
 (get) http://localhost:3000/Tasks/item	
